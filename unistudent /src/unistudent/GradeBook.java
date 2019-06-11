@@ -1,21 +1,21 @@
-package addressbook;
+package unistudent;
 
-public class Contact {
+public class Student {
 
     private String name;
     private String phone;
     private String email;
-    private String address;
+    private String id;
 
-    public Contact( String n, String p, String e, String a) {
+    public Student( String n, String p, String e, String a) {
         this.name = n;
         this.phone = p;
         this.email = e;
-        this.address = a;
+        this.id = a;
     }
 
     public String show () {
-        return this.name + " " + this.phone + " " + this.email + " " + this.address;
+        return this.name + " " + this.phone + " " + this.email + " " + this.id;
     }
     public String getPhone () {
         return this.phone;
@@ -35,7 +35,7 @@ public class Contact {
         this.email = data;
     }
     public void editAddress (String data) {
-        this.address = data;
+        this.id = data;
     }
 
 }

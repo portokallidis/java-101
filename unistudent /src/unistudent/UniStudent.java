@@ -1,10 +1,10 @@
-package addressbook;
+package unistudent;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class AddressBook {
+public class UniStudent {
     /* Create hash map for fast lookups when searching by name
     *
     * <ContactName, ContactObject>
@@ -17,7 +17,7 @@ public class AddressBook {
     *  */
     private Map<String, String> contactsByPhone = new HashMap<String, String>();
 
-    public AddressBook() {
+    public UniStudent() {
 //        Sample Data
         this.addContact("Rob", "6943929211", "rob@stark.com", ",Winterfell graveyard BT30 7BA");
         this.addContact("Sansa", "6943929222", "sansa@stark.com", "Winterfell castle BT30 7BA");

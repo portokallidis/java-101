@@ -1,11 +1,11 @@
-package addressbook;
+package unistudent;
 
 import java.util.Scanner;
 import java.util.Iterator;
 
-public class AddressBookUI {
+public class UniStudentUI {
 
-    public static void init(AddressBook AB) {
+    public static void init(UniStudent US) {
         int option;
         Scanner scan = new Scanner(System.in);
 
@@ -26,33 +26,33 @@ public class AddressBookUI {
 
         switch (option) {
             case 1:
-                AddressBookUI.displayAllContacts(AB);
+            UniStudentUI.displayAllContacts(US);
                 break;
             case 2:
-                AddressBookUI.addContact(AB);
+            UniStudentUI.addContact(US);
                 break;
             case 3:
-                AddressBookUI.searchContactByName(AB);
+            UniStudentUI.searchContactByName(US);
                 break;
             case 4:
-                AddressBookUI.searchContactByPhone(AB);
+            UniStudentUI.searchContactByPhone(US);
                 break;
             case 5:
-                AddressBookUI.editContact(AB);
+            UniStudentUI.editContact(US);
                 break;
             case 6:
-                AddressBookUI.deleteContact(AB);
+            UniStudentUI.deleteContact(US);
                 break;
             case 7:
                 System.out.println("GoodBye!");
                 break;
             default:
-                AddressBookUI.init(AB);
+            UniStudentUI.init(US);
 
         }
     }
 
-    private static void addContact(AddressBook AB) {
+    private static void addContact(UniStudent US) {
         String name, phone, email, address;
         boolean exists;
         Scanner scan = new Scanner(System.in);
@@ -63,10 +63,10 @@ public class AddressBookUI {
             System.out.println("Give contact name: ");
             name = scan.nextLine();
             if (name.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            if (AB.hasContact(name)) exists = true;
+            if (US.hasContact(name)) exists = true;
             else exists = false;
             if (exists) {
                 System.out.println("Contact with name (" + name + ") already exists");
@@ -77,10 +77,10 @@ public class AddressBookUI {
             System.out.println("Give contact phone: ");
             phone = scan.nextLine();
             if (phone.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            exists = AB.hasContactByPhone(phone);
+            exists = US.hasContactByPhone(phone);
             if (exists) {
                 System.out.println("Contact with phone (" + phone + ") already exists");
             }
@@ -89,24 +89,24 @@ public class AddressBookUI {
         System.out.println("Give contact email: ");
         email = scan.nextLine();
         if (email.equals("")) {
-            AddressBookUI.init(AB);
+            UniStudentUI.init(US);
             return;
         }
 
         System.out.println("Give contact address: ");
         address = scan.nextLine();
         if (address.equals("")) {
-            AddressBookUI.init(AB);
+            UniStudentUI.init(US);
             return;
         }
 
-        AB.addContact(name, phone, email, address);
+        US.addContact(name, phone, email, address);
         System.out.println("Contact (" + name + ") added!");
 
-        AddressBookUI.init(AB);
+        UniStudentUI.init(US);
     }
 
-    private static void editContact(AddressBook AB) {
+    private static void editContact(UniStudent US) {
 
         Scanner scan = new Scanner(System.in);
         String name, input;
@@ -118,13 +118,13 @@ public class AddressBookUI {
             System.out.println("Edit contact by name: ");
             name = scan.nextLine();
             if (name.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            exists = AB.hasContact(name);
+            exists = US.hasContact(name);
             if (exists) {
-                c = AB.getContact(name);
-                AddressBookUI.editContactOptions(AB, c);
+                c = US.getContact(name);
+                UniStudentUI.editContactOptions(US, c);
             } else {
                 System.out.println("Not found!");
             }
@@ -132,7 +132,7 @@ public class AddressBookUI {
     }
 
 
-    private static void editContactOptions(AddressBook AB, Contact c) {
+    private static void editContactOptions(UniStudent US, Contact c) {
         Scanner scan = new Scanner(System.in);
         Scanner scan2 = new Scanner(System.in);
         String input;
@@ -151,17 +151,17 @@ public class AddressBookUI {
             case 1:
                 System.out.println("Enter new name: ");
                 input = scan2.nextLine();
-                AB.editContactName(c.getName(), input);
+                US.editContactName(c.getName(), input);
                 System.out.println("Name updated to " + input);
-                AddressBookUI.editContactOptions(AB, c);
+                UniStudentUI.editContactOptions(US, c);
                 break;
 
             case 2:
                 System.out.println("Enter new phone: ");
                 input = scan2.nextLine();
-                AB.editContactPhone(c.getPhone(), input);
+                US.editContactPhone(c.getPhone(), input);
                 System.out.println("Phone updated to " + input);
-                AddressBookUI.editContactOptions(AB, c);
+                UniStudentUI.editContactOptions(US, c);
                 break;
 
             case 3:
@@ -169,7 +169,7 @@ public class AddressBookUI {
                 input = scan2.nextLine();
                 c.editEmail(input);
                 System.out.println("Email updated to " + input);
-                AddressBookUI.editContactOptions(AB, c);
+                UniStudentUI.editContactOptions(US, c);
                 break;
 
             case 4:
@@ -177,18 +177,18 @@ public class AddressBookUI {
                 input = scan2.nextLine();
                 c.editAddress(input);
                 System.out.println("Address updated to " + input);
-                AddressBookUI.editContactOptions(AB, c);
+                UniStudentUI.editContactOptions(US, c);
                 break;
 
             case 5:
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 break;
 
         }
 
     }
 
-    private static void deleteContact(AddressBook AB) {
+    private static void deleteContact(UniStudent US) {
         Scanner scan = new Scanner(System.in);
         Scanner scan2 = new Scanner(System.in);
         String name;
@@ -200,13 +200,13 @@ public class AddressBookUI {
             System.out.println("Edit contact by name: ");
             name = scan.nextLine();
             if (name.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            exists = AB.hasContact(name);
+            exists = US.hasContact(name);
             if (exists) {
                 do {
-                    System.out.println(AB.getContact(name).show());
+                    System.out.println(US.getContact(name).show());
                     System.out.println("Choose option: [1-2]");
                     System.out.println("1.DELETE CONTACT");
                     System.out.println("2.Cancel");
@@ -214,24 +214,24 @@ public class AddressBookUI {
 
                     switch (option) {
                         case 1:
-                            result = AB.deleteContact(name);
+                            result = US.deleteContact(name);
                             if (result) {
                                 System.out.println("Contact (" + name + ") deleted.");
                                 System.out.println();
                                 System.out.println("Press enter to return to Main menu..");
                                 scan2.nextLine();
-                                AddressBookUI.init(AB);
+                                UniStudentUI.init(US);
                             } else {
                                 System.out.println("Contact (" + name + ") could not be deleted!");
                                 System.out.println();
                                 System.out.println("Press enter to return to Main menu..");
                                 scan2.nextLine();
-                                AddressBookUI.init(AB);
+                                UniStudentUI.init(US);
                             }
                             return;
                         case 2:
                             System.out.println("Contact deletion canceled!");
-                            AddressBookUI.init(AB);
+                            UniStudentUI.init(US);
                             return;
                     }
                 } while (option != 1);
@@ -243,7 +243,7 @@ public class AddressBookUI {
         } while (!exists);
     }
 
-    private static void searchContactByName(AddressBook AB) {
+    private static void searchContactByName(UniStudent US) {
         Scanner scan = new Scanner(System.in);
         String name;
         boolean exists;
@@ -252,20 +252,20 @@ public class AddressBookUI {
             System.out.println("Search by contact name: ");
             name = scan.nextLine();
             if (name.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            exists = AB.hasContact(name);
+            exists = US.hasContact(name);
             if (exists) {
-                System.out.println(AB.getContact(name).show());
-                AddressBookUI.searchContactByName(AB);
+                System.out.println(US.getContact(name).show());
+                UniStudentUI.searchContactByName(US);
             } else {
                 System.out.println("Not found!");
             }
         } while (!exists);
     }
 
-    private static void searchContactByPhone(AddressBook AB) {
+    private static void searchContactByPhone(UniStudent US) {
         Scanner scan = new Scanner(System.in);
         String phone;
         boolean exists;
@@ -274,22 +274,22 @@ public class AddressBookUI {
             System.out.println("Search by phone number: ");
             phone = scan.nextLine();
             if (phone.equals("")) {
-                AddressBookUI.init(AB);
+                UniStudentUI.init(US);
                 return;
             }
-            exists = AB.hasContactByPhone(phone);
+            exists = US.hasContactByPhone(phone);
             if (exists) {
-                System.out.println(AB.getContactByPhone(phone).show());
-                AddressBookUI.searchContactByPhone(AB);
+                System.out.println(US.getContactByPhone(phone).show());
+                UniStudentUI.searchContactByPhone(US);
             } else {
                 System.out.println("Not found!");
             }
         } while (!exists);
     }
 
-    private static void displayAllContacts(AddressBook AB) {
+    private static void displayAllContacts(UniStudent US) {
         Scanner scan = new Scanner(System.in);
-        Iterator<Contact> all = AB.getAllContacts();
+        Iterator<Contact> all = US.getAllContacts();
         System.out.println("All Contacts: ");
         while (all.hasNext()) {
             Contact c = all.next();
@@ -298,6 +298,6 @@ public class AddressBookUI {
         System.out.println();
         System.out.println("Press enter to return to Main menu..");
         scan.nextLine();
-        AddressBookUI.init(AB);
+        UniStudentUI.init(US);
     }
 }
