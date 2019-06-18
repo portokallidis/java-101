@@ -27,6 +27,10 @@ public class Lecturer implements Serializable {
         this.email = email;
         this.scientificField = scientificField;
     }
+
+    public String show(){
+        return this.id + " " + this.name + " " + this.phone + " " + this.email + " " + this.scientificField;
+    }
     
     /**
      * Gettters

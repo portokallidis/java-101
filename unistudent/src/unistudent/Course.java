@@ -14,6 +14,10 @@ public class Course implements Serializable {
         this.id = id;
     }
         
+    public String show(){
+        return this.id + " " + this.title + " " + this.semester;
+    }
+
     /**
      * Gettters
      * 
