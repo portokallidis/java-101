@@ -34,13 +34,13 @@ public class UniStudentUI {
                 UniStudentUI.manageCourses(US);
                 break;
             case 4:
-                // UniStudentUI.assignCourseToLecturer(US);
+                UniStudentUI.assignCourseToLecturer(US);
                 break;
             case 5:
-                // UniStudentUI.assignCourseToStudent(US);
+                UniStudentUI.assignCourseToStudent(US);
                 break;
             case 6:
-                // UniStudentUI.enterStudentGradeForCourse(US);
+                UniStudentUI.enterStudentGradeForCourse(US);
                 break;
             case 7:
                 // UniStudentUI.displayStatistics(US);
@@ -54,24 +54,9 @@ public class UniStudentUI {
                 break;
         }
     }
-
-
-
     
-    // private static void displayAllStudents(UniStudent US) {
-    //     Scanner scan = new Scanner(System.in);
-    //     Iterator<Student> all = US.getAllStudents();
-    //     System.out.println("All Students: ");
-    //     while (all.hasNext()) {
-    //         Student c = all.next();
-    //         System.out.println(c.show());
-    //     }
-    //     System.out.println();
-    //     System.out.println("Press enter to return to Main menu..");
-    //     scan.nextLine();
-    //     UniStudentUI.init(US);
-    // }
-    
+
+
     /**
      * MANAGE STUDENTS
      */
@@ -83,21 +68,26 @@ public class UniStudentUI {
         System.out.println();
         System.out.println("=== UNISTUDENT Manage Students ===");
         System.out.println();
-        System.out.println("Choose option 1-3");
-        System.out.println("1. Add Student");
-        System.out.println("2. Edit/Delete Student");
-        System.out.println("3. Back to main menu");
+        System.out.println("Choose option 1-4");
+        System.out.println("1. List Students");
+        System.out.println("2. Add Student");
+        System.out.println("3. Edit/Delete Student");
+        System.out.println("4. Back to main menu");
 
         option = scan.nextInt();
 
         switch (option) {
             case 1:
-                addStudent(US);
+                System.out.print(US.listStudents());
+                UniStudentUI.manageStudents(US);
                 break;
             case 2:
-                editStudent(US);
+                addStudent(US);
                 break;
             case 3:
+                editStudent(US);
+                break;
+            case 4:
             default:
                 UniStudentUI.init(US);
                 break;
@@ -169,6 +159,7 @@ public class UniStudentUI {
         boolean exists = false;
         boolean error = false;
         System.out.println("=== Edit Student === ");
+        System.out.print(US.listStudents());
         do {
             System.out.println("Edit student by ID: ");
             error = false;
@@ -256,6 +247,7 @@ public class UniStudentUI {
 
     }
 
+    
 
     
     /**
@@ -268,21 +260,26 @@ public class UniStudentUI {
         System.out.println();
         System.out.println("=== UNILECTURER Manage Lecturers ===");
         System.out.println();
-        System.out.println("Choose option 1-3");
-        System.out.println("1. Add Lecturer");
-        System.out.println("2. Edit/Delete Lecturer");
-        System.out.println("3. Back to main menu");
+        System.out.println("Choose option 1-4");
+        System.out.println("1. List Lecturers");
+        System.out.println("2. Add Lecturer");
+        System.out.println("3. Edit/Delete Lecturer");
+        System.out.println("4. Back to main menu");
 
         option = scan.nextInt();
 
         switch (option) {
             case 1:
-                addLecturer(US);
+                System.out.print(US.listLecturers());
+                UniStudentUI.manageLecturers(US);
                 break;
             case 2:
-                editLecturer(US);
+                addLecturer(US);
                 break;
             case 3:
+                editLecturer(US);
+                break;
+            case 4:
             default:
                 UniStudentUI.init(US);
                 break;
@@ -441,21 +438,26 @@ public class UniStudentUI {
         System.out.println();
         System.out.println("=== UNISTUDENT Manage Courses ===");
         System.out.println();
-        System.out.println("Choose option 1-3");
-        System.out.println("1. Add Course");
-        System.out.println("2. Edit/Delete Course");
-        System.out.println("3. Back to main menu");
+        System.out.println("Choose option 1-4");
+        System.out.println("1. List Courses");
+        System.out.println("2. Add Course");
+        System.out.println("3. Edit/Delete Course");
+        System.out.println("4. Back to main menu");
 
         option = scan.nextInt();
 
         switch (option) {
             case 1:
-                addCourse(US);
+                System.out.print(US.listCourses());
+                UniStudentUI.manageCourses(US);
                 break;
             case 2:
-                editCourse(US);
+                addCourse(US);
                 break;
             case 3:
+                editCourse(US);
+                break;
+            case 4:
             default:
                 UniStudentUI.init(US);
                 break;
@@ -574,6 +576,221 @@ public class UniStudentUI {
                 break;
 
         }
+
+    }
+
+
+
+
+    /**
+     * Other methods
+     */
+
+     
+
+    static void assignCourseToStudent(UniStudent US) {
+
+        Scanner scan = new Scanner(System.in);
+        int idc=0,ids=0;
+        Course c=null;
+        Student s=null;
+        int option;
+        boolean exists = false;
+        boolean error = false;
+        System.out.println("=== Assign Course to Student === ");
+        System.out.print(US.listStudents());
+        do {
+            System.out.println("Select student by ID: ");
+            error = false;
+            try {
+                ids = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            s = US.getStudent(ids);
+            if (s.getId()==ids) {
+                System.out.println("Selected student: "+s.show());
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Student not Found");
+            UniStudentUI.init(US);
+        }
+
+
+        System.out.print(US.listCourses());
+        do {
+            System.out.println("Select course by ID: ");
+            error = false;
+            try {
+                idc = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            c = US.getCourse(idc);
+            if (c.getId()==idc) {
+                US.assignCourseToStudent(ids,idc);
+                System.out.println("Course: "+c.show());
+                System.out.println("Assigned to student : "+s.show());
+                UniStudentUI.init(US);
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Course not Found");
+            UniStudentUI.init(US);
+        }
+
+    }
+
+    static void assignCourseToLecturer(UniStudent US) {
+
+        Scanner scan = new Scanner(System.in);
+        int idc=0,ids=0;
+        Course c=null;
+        Lecturer s=null;
+        int option;
+        boolean exists = false;
+        boolean error = false;
+        System.out.println("=== Assign Course to Lecturer === ");
+        System.out.print(US.listLecturers());
+        do {
+            System.out.println("Select student by ID: ");
+            error = false;
+            try {
+                ids = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            s = US.getLecturer(ids);
+            if (s.getId()==ids) {
+                System.out.println("Selected student: "+s.show());
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Lecturer not Found");
+            UniStudentUI.init(US);
+        }
+
+
+        System.out.print(US.listCourses());
+        do {
+            System.out.println("Select course by ID: ");
+            error = false;
+            try {
+                idc = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            c = US.getCourse(idc);
+            if (c.getId()==idc) {
+                US.assignCourseToLecturer(ids,idc);
+                System.out.println("Course: "+c.show());
+                System.out.println("Assigned to student : "+s.show());
+                UniStudentUI.init(US);
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Course not Found");
+            UniStudentUI.init(US);
+        }
+
+    }
+
+
+    static void enterStudentGradeForCourse(UniStudent US) {
+
+        Scanner scan = new Scanner(System.in);
+        int grade=0,idc=0, ids=0;
+        Course c=null;
+        Student s=null;
+        StudentCourse sc=null;
+        int option;
+        boolean exists = false;
+        boolean error = false;
+        System.out.println("=== Student Grades === ");
+        System.out.print(US.listStudents());
+        do {
+            System.out.println("Select student by ID: ");
+            error = false;
+            try {
+                ids = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            s = US.getStudent(ids);
+            if (s.getId()==ids) {
+                System.out.println("Selected student: "+s.show());
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Student not Found");
+            UniStudentUI.init(US);
+        }
+
+
+        System.out.print(US.listCourses());
+        do {
+            System.out.println("Select course by ID: ");
+            error = false;
+            try {
+                idc = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input");
+                scan.next();
+            }
+        } while (error);
+        try {
+            c = US.getCourse(idc);
+            if (c.getId()==idc) {
+                US.assignCourseToStudent(ids,idc);
+                System.out.println("Selected Course: "+c.show());
+            } 
+        } catch(Exception e) {
+            ErrorHandler.text("Course not Found");
+            UniStudentUI.init(US);
+        }
+
+        try {        
+            sc = US.getStudentCourse(ids,idc);
+            sc.getStudentId();
+        }  catch(Exception e) {
+            ErrorHandler.text("Student("+ids+") has not been registered to course ("+idc+")");
+            UniStudentUI.init(US);
+        }
+
+
+        do {
+            System.out.println("Enter grade : ");
+            error = false;
+            try {
+                grade = scan.nextInt();
+            } catch(Exception e) {
+                error = true;
+                ErrorHandler.text("Wrong input, only integers are allowed.");
+                scan.next();
+            }
+        } while (error);
+        
+        
+        US.setStudentGradeForCourse(ids,idc,grade);
+        System.out.println("Grade:"+grade + " has been set." );
+        UniStudentUI.init(US);
 
     }
 

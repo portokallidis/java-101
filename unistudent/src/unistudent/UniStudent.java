@@ -55,6 +55,13 @@ public class UniStudent {
      * 
      */
     
+    public String listStudents() {
+        String list="---Students---\n";
+        for (int i = 0; i < this.Students.size(); i++) { 
+            list+=this.Students.get(i).show()+"\n";
+        }
+        return list;
+    }    
     public Student addStudent(String name, String phone, String email, String semester) {
         Student student = new Student(this.StudentNextID, name, phone, email, semester);
         this.Students.add(student);
@@ -77,7 +84,9 @@ public class UniStudent {
     }
     public void setStudentGradeForCourse(int studentId, int courseId,int grade){
         StudentCourse sc = this.getStudentCourse(studentId, courseId);
-        sc.setGrade(grade);
+        if(sc!=null) {
+            sc.setGrade(grade);
+        }
     }
     public void assignCourseToStudent(int studentId, int courseId){
         StudentCourse sc = this.getStudentCourse(studentId, courseId);
@@ -90,7 +99,7 @@ public class UniStudent {
         StudentCourse sc = this.getStudentCourse(studentId, courseId);
         if(sc!=null) this.StudentCourses.remove(sc);
     }
-    private StudentCourse getStudentCourse(int studentId, int courseId){
+    public StudentCourse getStudentCourse(int studentId, int courseId){
         StudentCourse result = null;
         for (int i = 0; i < this.StudentCourses.size(); i++) { 
             result = this.StudentCourses.get(i);
@@ -107,6 +116,13 @@ public class UniStudent {
      * 
      *  */ 
 
+    public String listLecturers() {
+        String list="---Lecturers---\n";
+        for (int i = 0; i < this.Lecturers.size(); i++) { 
+            list+=this.Lecturers.get(i).show()+"\n";
+        }
+        return list;
+    }    
     public Lecturer addLecturer(String name, String phone, String email, String scientificField) {
         Lecturer lecturer = new Lecturer(this.LecturerNextID, name, phone, email, scientificField);
         this.Lecturers.add(lecturer);
@@ -153,6 +169,14 @@ public class UniStudent {
      * COURSE METHODS
      * 
      *  */ 
+    
+    public String listCourses() {
+        String list="---Courses---\n";
+        for (int i = 0; i < this.Courses.size(); i++) { 
+            list+=this.Courses.get(i).show()+"\n";
+        }
+        return list;
+    }    
 
     public Course addCourse(String title, String semester) {
         Course course = new Course(this.CourseNextID, title, semester);
