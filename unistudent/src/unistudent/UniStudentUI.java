@@ -43,7 +43,7 @@ public class UniStudentUI {
                 UniStudentUI.enterStudentGradeForCourse(US);
                 break;
             case 7:
-                // UniStudentUI.displayStatistics(US);
+                UniStudentUI.displayStatistics(US);
                 break;
             case 8:
                 US.saveData();
@@ -581,6 +581,48 @@ public class UniStudentUI {
 
 
 
+    /**
+     * STATISTICS
+     *      
+     * */
+    
+    static void displayStatistics(UniStudent US) {
+        
+        int option;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println();
+        System.out.println("=== UNISTUDENT Statistics ===");
+        System.out.println();
+        System.out.println("Choose option 1-4");
+        System.out.println("1. Mean grade per course");
+        System.out.println("2. Mean grade per student");
+        System.out.println("3. Course - Mean grade chart");
+        System.out.println("4. Back to main menu");
+
+        option = scan.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.print(US.listCourses());
+                UniStudentUI.manageCourses(US);
+                break;
+            case 2:
+                System.out.print(US.listCourses());
+                addCourse(US);
+                break;
+            case 3:
+                editCourse(US);
+                break;
+            case 4:
+            default:
+                UniStudentUI.init(US);
+                break;
+        }
+    };
+
+    
+
 
     /**
      * Other methods
@@ -707,7 +749,6 @@ public class UniStudentUI {
         }
 
     }
-
 
     static void enterStudentGradeForCourse(UniStudent US) {
 

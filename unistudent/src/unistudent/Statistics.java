@@ -1,6 +1,6 @@
 package unistudent;
 
-public class Statistics implements Serializable {
+public class Statistics {
 
     /**
      * 
