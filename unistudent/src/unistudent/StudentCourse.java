@@ -34,6 +34,7 @@ public class StudentCourse implements Serializable {
         return this.grade; 
     }
     
+    
     /**
      * 
      * Settters

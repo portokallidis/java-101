@@ -200,6 +200,19 @@ public class UniStudent {
 
     }
 
+
+    /**
+     * STATISTICS METHODS
+     * 
+     */
+
+    public List<String> showStudentsWithMeanGrade(){
+        this.Students = UnistudentData.loadStudents();
+        this.StudentCourses = UnistudentData.loadStudentCourses();
+        return Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses);
+    }
+
+
     
     /**
      * 
