@@ -59,7 +59,9 @@ public class Statistics {
                 tmp = s.getName() + " ";
                 if(SHOW_GRAPH) {
                     tmp += String.join("", Collections.nCopies(GRAPH_RULER-tmp.length()," "))+"|";
-                    tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); // Java 11: GRAPH_CHAR.repeat(mean)
+                    tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); 
+                    tmp += " "+mean.toString();
+                    // Java 11: GRAPH_CHAR.repeat(mean)
                 } else {
                     tmp += mean.toString();
                 }
@@ -123,7 +125,9 @@ public class Statistics {
                 tmp = c.getTitle() + " ";
                 if(SHOW_GRAPH) {
                     tmp += String.join("", Collections.nCopies(GRAPH_RULER-tmp.length()," "))+"|";
-                    tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); // Java 11: GRAPH_CHAR.repeat(Math.round(mean))
+                    tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); 
+                    tmp += " "+mean.toString();
+                    // Java 11: "##".repeat(Math.round(mean))
                 } else {
                     tmp += mean.toString();
                 }
