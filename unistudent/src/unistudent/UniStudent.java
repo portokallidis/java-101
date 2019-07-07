@@ -89,8 +89,10 @@ public class UniStudent {
         }
     }
     public void assignCourseToStudent(int studentId, int courseId){
-        StudentCourse sc = this.getStudentCourse(studentId, courseId);
-        if(sc!=null) {
+        StudentCourse sc;
+        try {
+            sc = this.getStudentCourse(studentId, courseId);
+        } catch(Exception e) {
             sc = new StudentCourse(studentId, courseId);
             this.StudentCourses.add(sc);
         }
@@ -107,6 +109,7 @@ public class UniStudent {
                 break;
             } else result = null;
         }
+        System.out.println(result.getCourseId());
         return result;
     }
 
@@ -205,11 +208,28 @@ public class UniStudent {
      * STATISTICS METHODS
      * 
      */
+    
 
-    public List<String> showStudentsWithMeanGrade(){
+    public void showStudentsWithMeanGrade(){
         this.Students = UnistudentData.loadStudents();
         this.StudentCourses = UnistudentData.loadStudentCourses();
-        return Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses);
+        Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses,false);
+    }
+    public void showCoursesWithMeanGrade(){
+        this.Courses = UnistudentData.loadCourses();
+        this.StudentCourses = UnistudentData.loadStudentCourses();
+        Statistics.calculateMeanGradePerCourse(this.Courses,this.StudentCourses,false);
+    }
+
+    public void showStudentGraphWithMeanGrade(){
+        this.Students = UnistudentData.loadStudents();
+        this.StudentCourses = UnistudentData.loadStudentCourses();
+        Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses,true);
+    }
+    public void showCourseGraphWithMeanGrade(){
+        this.Courses = UnistudentData.loadCourses();
+        this.StudentCourses = UnistudentData.loadStudentCourses();
+        Statistics.calculateMeanGradePerCourse(this.Courses,this.StudentCourses,true);
     }
 
 

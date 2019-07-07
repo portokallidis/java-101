@@ -1,7 +1,6 @@
 package main;
 
-import unistudent.UniStudentUI;
-import unistudent.UniStudent;
+import unistudent.*;
 
 public class Main {
     public static void main(String[] args) {

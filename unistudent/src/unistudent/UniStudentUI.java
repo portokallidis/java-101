@@ -597,24 +597,32 @@ public class UniStudentUI {
         System.out.println("Choose option 1-4");
         System.out.println("1. Mean grade per course");
         System.out.println("2. Mean grade per student");
-        System.out.println("3. Course - Mean grade chart");
-        System.out.println("4. Back to main menu");
+        System.out.println("3. Courses - Mean grade chart");
+        System.out.println("4. Students - Mean grade chart");
+        System.out.println("5. Back to main menu");
 
         option = scan.nextInt();
 
         switch (option) {
             case 1:
-                System.out.print(US.listCourses());
-                UniStudentUI.manageCourses(US);
+                US.showCoursesWithMeanGrade();
+                UniStudentUI.displayStatistics(US);
                 break;
             case 2:
-                System.out.print(US.listCourses());
-                addCourse(US);
+                US.showStudentsWithMeanGrade();
+                UniStudentUI.displayStatistics(US);
                 break;
             case 3:
-                editCourse(US);
+                System.out.println("=== Students Chart ===");
+                US.showStudentGraphWithMeanGrade();
+                UniStudentUI.displayStatistics(US);
                 break;
             case 4:
+            System.out.println("=== Courses Chart ===");
+                US.showCourseGraphWithMeanGrade();
+                UniStudentUI.displayStatistics(US);
+                break;
+            case 5:
             default:
                 UniStudentUI.init(US);
                 break;
@@ -660,6 +668,7 @@ public class UniStudentUI {
         } catch(Exception e) {
             ErrorHandler.text("Student not Found");
             UniStudentUI.init(US);
+            return;
         }
 
 
@@ -684,8 +693,10 @@ public class UniStudentUI {
                 UniStudentUI.init(US);
             } 
         } catch(Exception e) {
+            ErrorHandler.text(e.toString());
             ErrorHandler.text("Course not Found");
             UniStudentUI.init(US);
+            return;
         }
 
     }
@@ -781,6 +792,7 @@ public class UniStudentUI {
         } catch(Exception e) {
             ErrorHandler.text("Student not Found");
             UniStudentUI.init(US);
+            return;
         }
 
 
@@ -799,12 +811,12 @@ public class UniStudentUI {
         try {
             c = US.getCourse(idc);
             if (c.getId()==idc) {
-                US.assignCourseToStudent(ids,idc);
                 System.out.println("Selected Course: "+c.show());
             } 
         } catch(Exception e) {
             ErrorHandler.text("Course not Found");
             UniStudentUI.init(US);
+            return;
         }
 
         try {        
@@ -813,6 +825,7 @@ public class UniStudentUI {
         }  catch(Exception e) {
             ErrorHandler.text("Student("+ids+") has not been registered to course ("+idc+")");
             UniStudentUI.init(US);
+            return;
         }
 
 
