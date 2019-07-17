@@ -597,8 +597,8 @@ public class UniStudentUI {
         System.out.println("Choose option 1-4");
         System.out.println("1. Mean grade per course");
         System.out.println("2. Mean grade per student");
-        System.out.println("3. Courses - Mean grade chart");
-        System.out.println("4. Students - Mean grade chart");
+        System.out.println("3. Students - Mean grade chart");
+        System.out.println("4. Courses - Mean grade chart");
         System.out.println("5. Back to main menu");
 
         option = scan.nextInt();
@@ -795,8 +795,14 @@ public class UniStudentUI {
             return;
         }
 
-
-        System.out.print(US.listCourses());
+        try {
+            System.out.print(US.listStudentCourses(ids));
+        } catch(Exception e) {
+            ErrorHandler.text("Student has not been registered to any course.");
+            UniStudentUI.init(US);
+            return;
+        }
+        
         do {
             System.out.println("Select course by ID: ");
             error = false;
@@ -818,7 +824,7 @@ public class UniStudentUI {
             UniStudentUI.init(US);
             return;
         }
-
+        
         try {        
             sc = US.getStudentCourse(ids,idc);
             sc.getStudentId();
@@ -827,7 +833,6 @@ public class UniStudentUI {
             UniStudentUI.init(US);
             return;
         }
-
 
         do {
             System.out.println("Enter grade : ");

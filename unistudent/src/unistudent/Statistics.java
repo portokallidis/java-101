@@ -29,6 +29,7 @@ public class Statistics {
         int courseCount;
         boolean availableResults = false;
         int ruler;
+        int repeat;
 
         for (int i = 0; i < studentCourses.size(); i++) { 
             StudentCourse sc = studentCourses.get(i);
@@ -41,8 +42,10 @@ public class Statistics {
                 curCount = CourseCountPerStudent.get(sc.getStudentId());
                 CourseCountPerStudent.put(sc.getStudentId(), curCount+1);
             } else {
-                CourseGradeSumPerStudent.put(sc.getStudentId(),sc.getGrade());
-                CourseCountPerStudent.put(sc.getStudentId(),1);
+                if(sc.getGrade()>=0) {
+                    CourseGradeSumPerStudent.put(sc.getStudentId(),sc.getGrade());
+                    CourseCountPerStudent.put(sc.getStudentId(),1);
+                }
             }
         }
 
@@ -58,7 +61,8 @@ public class Statistics {
                 mean = (float) CourseGradeSumPerStudent.get(s.getId()) / courseCount;
                 tmp = s.getName() + " ";
                 if(SHOW_GRAPH) {
-                    tmp += String.join("", Collections.nCopies(GRAPH_RULER-tmp.length()," "))+"|";
+                    repeat = GRAPH_RULER-tmp.length()>=0?GRAPH_RULER-tmp.length():0;
+                    tmp += String.join("", Collections.nCopies(repeat," "))+"|";
                     tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); 
                     tmp += " "+mean.toString();
                     // Java 11: GRAPH_CHAR.repeat(mean)
@@ -94,6 +98,7 @@ public class Statistics {
         Float mean;
         String tmp;
         int studentCount;
+        int repeat;
         boolean availableResults = false;
 
         for (int i = 0; i < studentCourses.size(); i++) { 
@@ -107,8 +112,10 @@ public class Statistics {
                 curCount = StudentCountPerCourse.get(sc.getCourseId());
                 StudentCountPerCourse.put(sc.getCourseId(), curCount+1);
             } else {
-                StudentGradeSumPerCourse.put(sc.getCourseId(),sc.getGrade());
-                StudentCountPerCourse.put(sc.getCourseId(),1);
+                if(sc.getGrade()>=0) {
+                    StudentGradeSumPerCourse.put(sc.getCourseId(),sc.getGrade());
+                    StudentCountPerCourse.put(sc.getCourseId(),1);
+                }
             }
         }
 
@@ -124,7 +131,8 @@ public class Statistics {
                 mean = (float) StudentGradeSumPerCourse.get(c.getId()) / studentCount;
                 tmp = c.getTitle() + " ";
                 if(SHOW_GRAPH) {
-                    tmp += String.join("", Collections.nCopies(GRAPH_RULER-tmp.length()," "))+"|";
+                    repeat = GRAPH_RULER-tmp.length()>=0?GRAPH_RULER-tmp.length():0;
+                    tmp += String.join("", Collections.nCopies(repeat," "))+"|";
                     tmp += String.join("", Collections.nCopies(Math.round(mean), GRAPH_CHAR)); 
                     tmp += " "+mean.toString();
                     // Java 11: "##".repeat(Math.round(mean))

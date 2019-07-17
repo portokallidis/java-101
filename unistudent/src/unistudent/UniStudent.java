@@ -180,6 +180,33 @@ public class UniStudent {
         }
         return list;
     }    
+    
+    public String listStudentCourses(int studentId) {
+        
+        List<Integer> courseFilter = new ArrayList<Integer>();
+        StudentCourse tmp = null;
+        Course tmpCourse = null;
+        
+        for (int i = 0; i < this.StudentCourses.size(); i++) { 
+            tmp = this.StudentCourses.get(i);
+            if(tmp.getStudentId()==studentId) {
+                if(courseFilter.indexOf(tmp.getCourseId())==-1) {
+                    courseFilter.add(tmp.getCourseId());
+                }
+            }
+        }
+        
+        if(courseFilter.size()==0) throw new RuntimeException();
+        
+        String list="---Courses---\n";
+        for (int i = 0; i < this.Courses.size(); i++) { 
+            tmpCourse = this.Courses.get(i);
+            if(courseFilter.indexOf(tmpCourse.getId())>=0) {
+                list+=tmpCourse.show()+"\n";
+            }
+        }
+        return list;
+    }    
 
     public Course addCourse(String title, String semester) {
         Course course = new Course(this.CourseNextID, title, semester);
