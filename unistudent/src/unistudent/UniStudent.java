@@ -7,14 +7,14 @@ public class UniStudent {
     
     private final int ID_INIT = 1000;
 
-    private List<Course> Courses = new ArrayList<Course>();
+    private List<Course> Courses;
     private int CourseNextID;
-    private List<Student> Students = new ArrayList<Student>();
+    private List<Student> Students;
     private int StudentNextID;
-    private List<Lecturer> Lecturers = new ArrayList<Lecturer>();
+    private List<Lecturer> Lecturers;
     private int LecturerNextID;
-    private List<LecturerCourse> LecturerCourses = new ArrayList<LecturerCourse>();
-    private List<StudentCourse> StudentCourses = new ArrayList<StudentCourse>();
+    private List<LecturerCourse> LecturerCourses;
+    private List<StudentCourse> StudentCourses;
     
 
     public UniStudent() {
@@ -238,24 +238,16 @@ public class UniStudent {
     
 
     public void showStudentsWithMeanGrade(){
-        this.Students = UnistudentData.loadStudents();
-        this.StudentCourses = UnistudentData.loadStudentCourses();
         Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses,false);
     }
     public void showCoursesWithMeanGrade(){
-        this.Courses = UnistudentData.loadCourses();
-        this.StudentCourses = UnistudentData.loadStudentCourses();
         Statistics.calculateMeanGradePerCourse(this.Courses,this.StudentCourses,false);
     }
 
     public void showStudentGraphWithMeanGrade(){
-        this.Students = UnistudentData.loadStudents();
-        this.StudentCourses = UnistudentData.loadStudentCourses();
         Statistics.calculateMeanGradePerStudent(this.Students,this.StudentCourses,true);
     }
     public void showCourseGraphWithMeanGrade(){
-        this.Courses = UnistudentData.loadCourses();
-        this.StudentCourses = UnistudentData.loadStudentCourses();
         Statistics.calculateMeanGradePerCourse(this.Courses,this.StudentCourses,true);
     }
 

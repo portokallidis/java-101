@@ -30,7 +30,7 @@ public class UnistudentData {
             oos.writeObject(courses);
             oos.close();
         } catch(Exception e) {
-            ErrorHandler.text("Error while saving data.");
+            ErrorHandler.text("Error while saving courses.");
         }
     }
     
@@ -46,7 +46,8 @@ public class UnistudentData {
             courses = (List<Course>) ois.readObject();
             ois.close();
         } catch (Exception e){
-            ErrorHandler.text("Error while loading data.");
+            // ErrorHandler.text("Error while loading courses.");
+            return new ArrayList<Course>();
         }
         return courses;
     }
@@ -59,7 +60,7 @@ public class UnistudentData {
             oos.writeObject(students);
             oos.close();
         } catch(Exception e) {
-            ErrorHandler.text("Error while saving data.");
+            ErrorHandler.text("Error while saving students.");
         }
     }
 
@@ -71,7 +72,8 @@ public class UnistudentData {
             students = (List<Student>) ois.readObject();
             ois.close();
         } catch (Exception e){
-            ErrorHandler.text("Error while loading data.");
+            // ErrorHandler.text("Error while loading students.");
+            return new ArrayList<Student>();
         }
         return students;
     }
@@ -85,7 +87,7 @@ public class UnistudentData {
             oos.writeObject(lecturers);
             oos.close();
         } catch(Exception e) {
-            ErrorHandler.text("Error while saving data.");
+            ErrorHandler.text("Error while saving lecturers.");
         }
     }
 
@@ -97,7 +99,8 @@ public class UnistudentData {
             lecturers = (List<Lecturer>) ois.readObject();
             ois.close();
         } catch (Exception e){
-            ErrorHandler.text("Error while loading data.");
+            // ErrorHandler.text("Error while loading lecturers.");
+            return new ArrayList<Lecturer>();
         }
         return lecturers;
     }
@@ -111,7 +114,7 @@ public class UnistudentData {
             oos.writeObject(studentCourses);
             oos.close();
         } catch(Exception e) {
-            ErrorHandler.text("Error while saving data.");
+            ErrorHandler.text("Error while saving student-course associations.");
         }
     }
 
@@ -123,7 +126,8 @@ public class UnistudentData {
             studentCourses = (List<StudentCourse>) ois.readObject();
             ois.close();
         } catch (Exception e){
-            ErrorHandler.text("Error while loading data.");
+            // ErrorHandler.text("Error while loading student-course associations.");
+            return new ArrayList<StudentCourse>();
         }
         return studentCourses;
     }
@@ -137,7 +141,7 @@ public class UnistudentData {
             oos.writeObject(lecturerCourses);
             oos.close();
         } catch(Exception e) {
-            ErrorHandler.text("Error while saving data.");
+            ErrorHandler.text("Error while saving lecturer-course associations.");
         }
     }
 
@@ -149,7 +153,8 @@ public class UnistudentData {
             lecturerCourses = (List<LecturerCourse>) ois.readObject();
             ois.close();
         } catch (Exception e){
-            ErrorHandler.text("Error while loading data.");
+            // ErrorHandler.text("Error while loading lecturer-course associations.");
+            return new ArrayList<LecturerCourse>();
         }
         return lecturerCourses;
     }

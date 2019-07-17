@@ -19,8 +19,10 @@ public class Course implements Serializable {
     }
 
     /**
-     * Gettters
-     * 
+     * We ask for course's parameters
+     * @param id
+     * @param title
+     * @param semester
      */
 
     public int getId(){ 
@@ -34,8 +36,10 @@ public class Course implements Serializable {
     }
     
     /**
-     * Setters
-     * 
+     * We take back the asked parameters
+     * @return id
+     * @return title
+     * @return semester
      */
 
     public int setId(int id){ 

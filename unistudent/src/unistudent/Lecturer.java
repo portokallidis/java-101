@@ -13,7 +13,7 @@ public class Lecturer implements Serializable {
 
 
     /**
-     * 
+     * We set the Lecturer's parameters
      * @param id
      * @param name
      * @param phone
@@ -33,8 +33,12 @@ public class Lecturer implements Serializable {
     }
     
     /**
-     * Gettters
-     * 
+     * We ask for Lecturer's parameters
+     * @param id
+     * @param name
+     * @param phone
+     * @param email
+     * @param scientificField
      */
 
     public int getId(){ 
@@ -54,8 +58,12 @@ public class Lecturer implements Serializable {
     }
     
     /**
-     * Setters
-     * 
+     * We get back Lecturer's parameters
+     * @return id
+     * @return name
+     * @return phone
+     * @return email
+     * @return scientificField
      */
 
     public int setId(int id){ 

@@ -8,7 +8,7 @@ public class LecturerCourse implements Serializable {
     private int courseId;
 
     /**
-     * @
+     * We set LecturerCourse's parameters
      * @param lecturerId
      * @param courseId
      */
@@ -18,8 +18,9 @@ public class LecturerCourse implements Serializable {
     }
 
     /**
-     * Gettters
-     * 
+     * We ask for the LecturerCourse's parameters
+     * @param lecturerId
+     * @param courseId
      */
 
     public int getLecturerId(){ 

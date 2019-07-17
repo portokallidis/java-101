@@ -10,7 +10,7 @@ public class Student implements Serializable {
     private String semester;
 
     /**
-     * 
+     * We set the Student's parameters
      * @param id
      * @param name
      * @param phone
@@ -30,8 +30,12 @@ public class Student implements Serializable {
     }
 
     /**
-     * Gettters
-     * 
+     * We ask for the Student's parameters
+     * @param id
+     * @param name
+     * @param phone
+     * @param email
+     * @param semester
      */
 
     public int getId(){ 
@@ -51,8 +55,12 @@ public class Student implements Serializable {
     }
     
     /**
-     * Setters
-     * 
+     * We take back the asked Student's parameters
+     * @return id
+     * @return name
+     * @return phone
+     * @return email
+     * @return semester
      */
 
     public int setId(int id){ 

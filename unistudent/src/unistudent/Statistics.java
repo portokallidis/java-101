@@ -8,7 +8,7 @@ import java.util.Collections;
 public class Statistics {
     
     /**
-     * 
+     * We calculate Statistic's parameters per Student
      * @param students
      * @param studentCourses
      */
@@ -83,7 +83,7 @@ public class Statistics {
     }
 
     /**
-     * 
+     * We calculate Statistic's parameters per Course
      * @param courses
      * @param studentCourses
      */

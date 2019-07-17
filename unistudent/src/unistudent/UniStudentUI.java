@@ -347,6 +347,7 @@ public class UniStudentUI {
         boolean exists = false;
         boolean error = false;
         System.out.println("=== Edit Lecturer === ");
+        System.out.print(US.listLecturers());
         do {
             System.out.println("Edit lecturer by ID: ");
             error = false;
@@ -510,6 +511,7 @@ public class UniStudentUI {
         boolean exists = false;
         boolean error = false;
         System.out.println("=== Edit Course === ");
+        System.out.print(US.listCourses());
         do {
             System.out.println("Edit course by ID: ");
             error = false;
