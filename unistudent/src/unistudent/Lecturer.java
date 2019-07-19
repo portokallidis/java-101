@@ -11,15 +11,16 @@ public class Lecturer implements Serializable {
     private String email;
     private String scientificField;
 
-
+    
     /**
-     * We set the Lecturer's parameters
+     * We set the parameters for public class Lecturer
      * @param id
      * @param name
      * @param phone
      * @param email
      * @param scientificField
      */
+    
     public Lecturer( int id, String name, String phone, String email, String scientificField ){
         this.id = id;
         this.name = name;
@@ -31,15 +32,6 @@ public class Lecturer implements Serializable {
     public String show(){
         return this.id + " " + this.name + " " + this.phone + " " + this.email + " " + this.scientificField;
     }
-    
-    /**
-     * We ask for Lecturer's parameters
-     * @param id
-     * @param name
-     * @param phone
-     * @param email
-     * @param scientificField
-     */
 
     public int getId(){ 
         return this.id; 
@@ -56,15 +48,6 @@ public class Lecturer implements Serializable {
     public String getScientificField(){ 
         return this.scientificField; 
     }
-    
-    /**
-     * We get back Lecturer's parameters
-     * @return id
-     * @return name
-     * @return phone
-     * @return email
-     * @return scientificField
-     */
 
     public int setId(int id){ 
         this.id = id; 

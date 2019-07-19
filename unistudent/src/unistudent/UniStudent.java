@@ -62,12 +62,30 @@ public class UniStudent {
         }
         return list;
     }    
+    
+    /**
+    * Create a new student
+    * @param name
+    * @param phone
+    * @param email
+    * @param semester
+    * @return Student
+    */
     public Student addStudent(String name, String phone, String email, String semester) {
         Student student = new Student(this.StudentNextID, name, phone, email, semester);
         this.Students.add(student);
         this.StudentNextID++;
         return student;
     }
+    
+    /**
+    * Create a new student
+    * @param name
+    * @param phone
+    * @param email
+    * @param semester
+    * @return Student
+    */
     public Student getStudent(int id) {
         Student result = null;
         for (int i = 0; i < this.Students.size(); i++) { 
@@ -78,16 +96,34 @@ public class UniStudent {
         }
         return result;
     }
+    
+    /**
+    * Delete a student
+    * @param id
+    */
     public void remvoveStudent(int id) {
         Student result = this.getStudent(id);
         if(result.getId()>0) this.Students.remove(result);
     }
+    
+    /**
+    * Set student's grade for a Course
+    * @param studentId
+    * @param courseId
+    * @param grade
+    */
     public void setStudentGradeForCourse(int studentId, int courseId,int grade){
         StudentCourse sc = this.getStudentCourse(studentId, courseId);
         if(sc!=null) {
             sc.setGrade(grade);
         }
     }
+    
+    /**
+    * Assign a course to a student
+    * @param studentId
+    * @param courseId
+    */
     public void assignCourseToStudent(int studentId, int courseId){
         StudentCourse sc;
         try {
@@ -97,10 +133,12 @@ public class UniStudent {
             this.StudentCourses.add(sc);
         }
     }
-    public void deassignCourseFromStudent(int studentId, int courseId){
-        StudentCourse sc = this.getStudentCourse(studentId, courseId);
-        if(sc!=null) this.StudentCourses.remove(sc);
-    }
+    
+    /**
+    * Retrieve a student-course relation
+    * @param studentId
+    * @param courseId
+    */
     public StudentCourse getStudentCourse(int studentId, int courseId){
         StudentCourse result = null;
         for (int i = 0; i < this.StudentCourses.size(); i++) { 
@@ -126,12 +164,27 @@ public class UniStudent {
         }
         return list;
     }    
+    
+    /**
+    * Create a new lecturer
+    * @param name
+    * @param phone
+    * @param email
+    * @param scientificField
+    * @return Lecturer
+    */
     public Lecturer addLecturer(String name, String phone, String email, String scientificField) {
         Lecturer lecturer = new Lecturer(this.LecturerNextID, name, phone, email, scientificField);
         this.Lecturers.add(lecturer);
         this.LecturerNextID++;
         return lecturer;
     }
+    
+    /**
+    * Retrieve a lecturer
+    * @param id
+    * @return Lecturer
+    */
     public Lecturer getLecturer(int id) {
         Lecturer result = null;
         for (int i = 0; i < this.Lecturers.size(); i++) { 
@@ -142,10 +195,21 @@ public class UniStudent {
         }
         return result;
     }    
+    
+    /**
+    * Delete a lecturer
+    * @param id
+    */
     public void removeLecturer(int id) {
         Lecturer result = this.getLecturer(id);
         if(result.getId()>0) this.Lecturers.remove(result);
     }
+    
+    /**
+    * Assign a course to a lecturer
+    * @param lecturerId
+    * @param courseId
+    */
     public void assignCourseToLecturer(int lecturerId, int courseId){
         LecturerCourse lc = this.getLecturerCourse(lecturerId, courseId);
         if(lc==null) {
@@ -153,10 +217,12 @@ public class UniStudent {
             this.LecturerCourses.add(lc);
         }
     }
-    public void deassignCourseFromLecturer(int lecturerId, int courseId){
-        LecturerCourse lc = this.getLecturerCourse(lecturerId, courseId);
-        if(lc.getLecturerId()>0) this.LecturerCourses.remove(lc);
-    }
+    
+    /**
+    * Retrieve a lecturer-course relation
+    * @param lecturerId
+    * @param courseId
+    */
     private LecturerCourse getLecturerCourse(int lecturerId, int courseId){
         LecturerCourse result = null;
         for (int i = 0; i < this.LecturerCourses.size(); i++) { 
@@ -181,6 +247,10 @@ public class UniStudent {
         return list;
     }    
     
+    /**
+    * Retrieve all assigned courses for a student
+    * @param studentId
+    */
     public String listStudentCourses(int studentId) {
         
         List<Integer> courseFilter = new ArrayList<Integer>();
@@ -207,13 +277,25 @@ public class UniStudent {
         }
         return list;
     }    
-
+    
+    /**
+    * Create a new course
+    * @param title
+    * @param semester
+    * @return Course
+    */
     public Course addCourse(String title, String semester) {
         Course course = new Course(this.CourseNextID, title, semester);
         this.Courses.add(course);
         this.CourseNextID++;
         return course;
     }
+    
+    /**
+    * Retrieve a course
+    * @param id
+    * @return Course
+    */
     public Course getCourse(int id) {
         Course result = null;
         for (int i = 0; i < this.Courses.size(); i++) { 
@@ -224,6 +306,11 @@ public class UniStudent {
         }
         return result;
     }    
+    
+    /**
+    * Delete a course
+    * @param id
+    */
     public void removeCourse(int id) {
         Course result = this.getCourse(id);
         if(result.getId()>0) this.Courses.remove(result);

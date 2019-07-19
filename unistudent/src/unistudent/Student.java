@@ -10,13 +10,14 @@ public class Student implements Serializable {
     private String semester;
 
     /**
-     * We set the Student's parameters
+     * We set the parameters for public class Student
      * @param id
      * @param name
      * @param phone
      * @param email
      * @param semester
      */
+    
     public Student( int id, String name, String phone, String email, String semester){
         this.id = id;
         this.name = name;
@@ -29,15 +30,7 @@ public class Student implements Serializable {
         return this.id + " " + this.name + " " + this.phone + " " + this.email + " " + this.semester;
     }
 
-    /**
-     * We ask for the Student's parameters
-     * @param id
-     * @param name
-     * @param phone
-     * @param email
-     * @param semester
-     */
-
+    
     public int getId(){ 
         return this.id; 
     }
@@ -53,16 +46,7 @@ public class Student implements Serializable {
     public String getSemester(){ 
         return this.semester; 
     }
-    
-    /**
-     * We take back the asked Student's parameters
-     * @return id
-     * @return name
-     * @return phone
-     * @return email
-     * @return semester
-     */
-
+   
     public int setId(int id){ 
         this.id = id; 
         return this.id; 

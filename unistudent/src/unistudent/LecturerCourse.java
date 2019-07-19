@@ -8,7 +8,7 @@ public class LecturerCourse implements Serializable {
     private int courseId;
 
     /**
-     * We set LecturerCourse's parameters
+     * We set the parameters for public class LecturerCourse
      * @param lecturerId
      * @param courseId
      */
@@ -16,12 +16,6 @@ public class LecturerCourse implements Serializable {
         this.lecturerId = lecturerId;
         this.courseId = courseId;
     }
-
-    /**
-     * We ask for the LecturerCourse's parameters
-     * @param lecturerId
-     * @param courseId
-     */
 
     public int getLecturerId(){ 
         return this.lecturerId; 

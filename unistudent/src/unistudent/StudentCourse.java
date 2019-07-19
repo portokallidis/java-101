@@ -9,9 +9,10 @@ public class StudentCourse implements Serializable {
     private int grade;
 
     /**
-     * We set StudentCourse's parameters
+     * We set the parameters for public class StudentCourse
      * @param studentId
      * @param courseId
+     * @param grade
      */
     public StudentCourse( int studentId, int courseId) {
         this.studentId = studentId;
@@ -19,11 +20,6 @@ public class StudentCourse implements Serializable {
         // this.grade = null;
     }
 
-    /**
-     * We ask for StudentCourse's parameters
-     * @param studentId
-     * @param courseId
-     */
 
     public int getStudentId(){ 
         return this.studentId; 
@@ -35,10 +31,7 @@ public class StudentCourse implements Serializable {
         return this.grade; 
     }
     
-    /**
-     * We set StudentCourse's grade
-     * @return grade
-     */
+   
     public void setGrade (int grade) {
         this.grade = grade;
     }

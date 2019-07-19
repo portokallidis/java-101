@@ -8,6 +8,13 @@ public class Course implements Serializable {
     private String title;
     private String semester;
 
+   /**
+     * We set the parameters for public class Course
+     * @param id
+     * @param title
+     * @param semester
+     */
+    
     public Course(int id, String title, String semester) {
         this.title = title;
         this.semester = semester;
@@ -17,13 +24,6 @@ public class Course implements Serializable {
     public String show(){
         return this.id + " " + this.title + " " + this.semester;
     }
-
-    /**
-     * We ask for course's parameters
-     * @param id
-     * @param title
-     * @param semester
-     */
 
     public int getId(){ 
         return this.id; 
@@ -35,13 +35,6 @@ public class Course implements Serializable {
         return this.semester; 
     }
     
-    /**
-     * We take back the asked parameters
-     * @return id
-     * @return title
-     * @return semester
-     */
-
     public int setId(int id){ 
         this.id = id; 
         return this.id; 
@@ -55,6 +48,4 @@ public class Course implements Serializable {
         return this.semester; 
     }
     
-    
-
 }

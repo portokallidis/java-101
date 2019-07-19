@@ -545,7 +545,7 @@ public class UniStudentUI {
         System.out.println("Choose option: [1-4]");
         System.out.println("1.edit title");
         System.out.println("2.edit semester");
-        System.out.println("3.DELETE STUDENT");
+        System.out.println("3.DELETE COURSE");
         System.out.println("4.Back to main menu");
         option = scan.nextInt();
         System.out.println();
@@ -715,7 +715,7 @@ public class UniStudentUI {
         System.out.println("=== Assign Course to Lecturer === ");
         System.out.print(US.listLecturers());
         do {
-            System.out.println("Select student by ID: ");
+            System.out.println("Select lecturer by ID: ");
             error = false;
             try {
                 ids = scan.nextInt();
@@ -728,7 +728,7 @@ public class UniStudentUI {
         try {
             s = US.getLecturer(ids);
             if (s.getId()==ids) {
-                System.out.println("Selected student: "+s.show());
+                System.out.println("Selected lecturer: "+s.show());
             } 
         } catch(Exception e) {
             ErrorHandler.text("Lecturer not Found");
@@ -753,7 +753,7 @@ public class UniStudentUI {
             if (c.getId()==idc) {
                 US.assignCourseToLecturer(ids,idc);
                 System.out.println("Course: "+c.show());
-                System.out.println("Assigned to student : "+s.show());
+                System.out.println("Assigned to lecturer : "+s.show());
                 UniStudentUI.init(US);
             } 
         } catch(Exception e) {

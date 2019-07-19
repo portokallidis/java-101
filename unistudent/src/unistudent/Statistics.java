@@ -6,16 +6,16 @@ import java.util.Map;
 import java.util.Collections;
 
 public class Statistics {
-    
-    /**
-     * We calculate Statistic's parameters per Student
-     * @param students
-     * @param studentCourses
-     */
 
     static final String GRAPH_CHAR = "###";
     static final int GRAPH_RULER = 14;
 
+    /**
+     * We calculate Statistics per student
+     * @param students
+     * @param studentCourses
+     * @param SHOW_GRAPH
+     */
     static public void calculateMeanGradePerStudent(List<Student> students, List<StudentCourse> studentCourses, boolean SHOW_GRAPH){
         
         // List<String> output;
@@ -83,9 +83,10 @@ public class Statistics {
     }
 
     /**
-     * We calculate Statistic's parameters per Course
+     * We calculate Statistics per Course
      * @param courses
      * @param studentCourses
+     * @param SHOW_GRAPH
      */
     static public void calculateMeanGradePerCourse(List<Course> courses, List<StudentCourse> studentCourses, boolean SHOW_GRAPH){
 
